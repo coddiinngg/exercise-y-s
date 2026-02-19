@@ -12,6 +12,15 @@ class JawlineApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Jawline Challenge',
+      builder: (context, child) {
+        final mediaQuery = MediaQuery.of(context);
+        return MediaQuery(
+          data: mediaQuery.copyWith(
+            textScaler: const TextScaler.linear(1.0),
+          ),
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: AppColors.background,
@@ -146,7 +155,7 @@ class _TabButton extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          size: 28,
+          size: 25,
           color: active ? AppColors.primary : const Color(0xFFC9CBD3),
         ),
       ),
@@ -241,7 +250,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Expanded(
             child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: s.wp(5.3), vertical: s.hp(1.1)),
+              padding: EdgeInsets.symmetric(
+                  horizontal: s.wp(5.3), vertical: s.hp(1.1)),
               children: [
                 _DayCard(
                   day: 1,
@@ -310,7 +320,8 @@ class _HeroSection extends StatelessWidget {
               height: s.hp(5.2),
               decoration: const BoxDecoration(
                 color: AppColors.background,
-                borderRadius: BorderRadius.vertical(top: Radius.elliptical(360, 90)),
+                borderRadius:
+                    BorderRadius.vertical(top: Radius.elliptical(360, 90)),
               ),
             ),
           ),
@@ -319,12 +330,16 @@ class _HeroSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    _HeroBubble(icon: Icons.workspace_premium_rounded, iconColor: Color(0xFFF8DA44)),
+                  children: [
+                    _HeroBubble(
+                        icon: Icons.workspace_premium_rounded,
+                        iconColor: Color(0xFFF8DA44)),
                     SizedBox(width: 10),
-                    _HeroBubble(icon: Icons.landscape_rounded, iconColor: Color(0xFF7362FF)),
+                    _HeroBubble(
+                        icon: Icons.landscape_rounded,
+                        iconColor: Color(0xFF7362FF)),
                   ],
                 ),
                 SizedBox(height: s.hp(0.9)),
@@ -332,7 +347,7 @@ class _HeroSection extends StatelessWidget {
                   data.subtitle,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: s.sp(15),
+                    fontSize: s.sp(13.5),
                     height: 1.25,
                     fontWeight: FontWeight.w600,
                   ),
@@ -344,7 +359,7 @@ class _HeroSection extends StatelessWidget {
                     data.title,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: s.sp(20),
+                      fontSize: s.sp(18),
                       height: 1.18,
                       fontWeight: FontWeight.w800,
                     ),
@@ -355,7 +370,7 @@ class _HeroSection extends StatelessWidget {
                   '0/${data.days} Days Finished',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: s.sp(14),
+                    fontSize: s.sp(12.5),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -476,7 +491,8 @@ class _DayCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         onTap: locked ? () => _showPaywall(context) : () {},
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: s.wp(3.6), vertical: s.hp(1.7)),
+          padding:
+              EdgeInsets.symmetric(horizontal: s.wp(3.6), vertical: s.hp(1.7)),
           child: Row(
             children: [
               Container(
@@ -497,14 +513,15 @@ class _DayCard extends StatelessWidget {
                 'Day $day',
                 style: TextStyle(
                   color: showStart ? Colors.white : AppColors.textStrong,
-                  fontSize: s.sp(26),
+                  fontSize: s.sp(22),
                   fontWeight: FontWeight.w800,
                 ),
               ),
               const Spacer(),
               if (showStart)
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: s.wp(4.8), vertical: s.hp(0.85)),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: s.wp(4.8), vertical: s.hp(0.85)),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(24),
@@ -514,7 +531,7 @@ class _DayCard extends StatelessWidget {
                     style: TextStyle(
                       color: accent,
                       fontWeight: FontWeight.w800,
-                      fontSize: s.sp(14),
+                      fontSize: s.sp(12.8),
                     ),
                   ),
                 )
@@ -523,7 +540,8 @@ class _DayCard extends StatelessWidget {
                   children: [
                     if (locked) ...[
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: s.wp(2.2), vertical: s.hp(0.45)),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: s.wp(2.2), vertical: s.hp(0.45)),
                         margin: EdgeInsets.only(right: s.wp(2.4)),
                         decoration: BoxDecoration(
                           color: const Color(0xFFE1E5FF),
@@ -535,7 +553,7 @@ class _DayCard extends StatelessWidget {
                             color: AppColors.primary,
                             fontWeight: FontWeight.w800,
                             letterSpacing: 0.3,
-                            fontSize: s.sp(11),
+                            fontSize: s.sp(10),
                           ),
                         ),
                       ),
@@ -591,7 +609,7 @@ void _showPaywall(BuildContext context) {
             SizedBox(height: s.hp(1.6)),
             Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: _PlanOption(
                     title: '월간',
                     price: '₩9,900',
@@ -599,7 +617,7 @@ void _showPaywall(BuildContext context) {
                   ),
                 ),
                 SizedBox(width: s.wp(2.6)),
-                Expanded(
+                const Expanded(
                   child: _PlanOption(
                     title: '연간',
                     price: '₩59,000',
@@ -610,11 +628,11 @@ void _showPaywall(BuildContext context) {
               ],
             ),
             SizedBox(height: s.hp(1.4)),
-            _PaywallFeatureRow(text: '모든 Day 프로그램 잠금 해제'),
+            const _PaywallFeatureRow(text: '모든 Day 프로그램 잠금 해제'),
             SizedBox(height: s.hp(0.55)),
-            _PaywallFeatureRow(text: '커스텀 플랜 전체 열람'),
+            const _PaywallFeatureRow(text: '커스텀 플랜 전체 열람'),
             SizedBox(height: s.hp(0.55)),
-            _PaywallFeatureRow(text: '기록 화면 이미지 업로드'),
+            const _PaywallFeatureRow(text: '기록 화면 이미지 업로드'),
             SizedBox(height: s.hp(1.8)),
             SizedBox(
               width: double.infinity,
@@ -622,7 +640,8 @@ void _showPaywall(BuildContext context) {
                 onPressed: () {},
                 style: FilledButton.styleFrom(
                   backgroundColor: const Color(0xFF1C3CEF),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16)),
                   padding: EdgeInsets.symmetric(vertical: s.hp(1.7)),
                 ),
                 child: Text(
@@ -642,7 +661,8 @@ void _showPaywall(BuildContext context) {
                 onPressed: () => Navigator.pop(context),
                 child: Text(
                   '나중에',
-                  style: TextStyle(fontSize: s.sp(14), color: const Color(0xFF5A5F73)),
+                  style: TextStyle(
+                      fontSize: s.sp(14), color: const Color(0xFF5A5F73)),
                 ),
               ),
             ),
@@ -666,13 +686,14 @@ class StreakScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             color: const Color(0xFFCFDCF5),
-            padding: EdgeInsets.fromLTRB(s.wp(5.3), s.hp(2.2), s.wp(5.3), s.hp(2.5)),
+            padding:
+                EdgeInsets.fromLTRB(s.wp(5.3), s.hp(2.2), s.wp(5.3), s.hp(2.5)),
             child: Column(
               children: [
                 Text(
                   'Streak',
                   style: TextStyle(
-                    fontSize: s.sp(24),
+                    fontSize: s.sp(22),
                     fontWeight: FontWeight.w800,
                     color: AppColors.primary,
                   ),
@@ -687,7 +708,7 @@ class StreakScreen extends StatelessWidget {
                         Text(
                           '0',
                           style: TextStyle(
-                            fontSize: s.sp(76),
+                            fontSize: s.sp(64),
                             height: 1,
                             fontWeight: FontWeight.w800,
                             color: AppColors.primary,
@@ -696,14 +717,14 @@ class StreakScreen extends StatelessWidget {
                         Text(
                           'Day streak!',
                           style: TextStyle(
-                            fontSize: s.sp(20),
+                            fontSize: s.sp(18),
                             fontWeight: FontWeight.w700,
                             color: AppColors.primary,
                           ),
                         ),
                       ],
                     ),
-                    Text('🔥', style: TextStyle(fontSize: s.sp(70))),
+                    Text('🔥', style: TextStyle(fontSize: s.sp(62))),
                   ],
                 ),
               ],
@@ -711,14 +732,15 @@ class StreakScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView(
-              padding: EdgeInsets.fromLTRB(s.wp(5.3), s.hp(1.8), s.wp(5.3), s.hp(1.8)),
+              padding: EdgeInsets.fromLTRB(
+                  s.wp(5.3), s.hp(1.8), s.wp(5.3), s.hp(1.8)),
               children: [
                 Text(
                   'Calendar',
                   style: TextStyle(
                     color: const Color(0xFF878991),
                     fontWeight: FontWeight.w700,
-                    fontSize: s.sp(22),
+                    fontSize: s.sp(20),
                   ),
                 ),
                 SizedBox(height: s.hp(1.2)),
@@ -727,7 +749,8 @@ class StreakScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(22),
-                    border: Border.all(color: const Color(0xFFD5D7DE), width: 2),
+                    border:
+                        Border.all(color: const Color(0xFFD5D7DE), width: 2),
                   ),
                   child: const _MiniCalendar(),
                 ),
@@ -784,7 +807,8 @@ class _PlanOption extends StatelessWidget {
               const Spacer(),
               if (tag != null)
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: s.wp(1.8), vertical: s.hp(0.2)),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: s.wp(1.8), vertical: s.hp(0.2)),
                   decoration: BoxDecoration(
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(999),
@@ -825,7 +849,8 @@ class _PaywallFeatureRow extends StatelessWidget {
     final s = UIScale.of(context);
     return Row(
       children: [
-        Icon(Icons.check_circle_rounded, color: const Color(0xFF2F55F3), size: s.sp(16)),
+        Icon(Icons.check_circle_rounded,
+            color: const Color(0xFF2F55F3), size: s.sp(16)),
         SizedBox(width: s.wp(2)),
         Text(
           text,
@@ -876,7 +901,8 @@ class _MiniCalendar extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(Icons.chevron_left_rounded, color: const Color(0xFF8D9098), size: s.sp(21)),
+            Icon(Icons.chevron_left_rounded,
+                color: const Color(0xFF8D9098), size: s.sp(21)),
             const Spacer(),
             Text(
               'February 2026',
@@ -891,9 +917,9 @@ class _MiniCalendar extends StatelessWidget {
           ],
         ),
         SizedBox(height: s.hp(1.8)),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             _WeekLabel('Sun'),
             _WeekLabel('Mon'),
             _WeekLabel('Tue'),
@@ -963,28 +989,30 @@ class CustomScreen extends StatelessWidget {
             'Custom',
             style: TextStyle(
               color: AppColors.textStrong,
-              fontSize: s.sp(26),
+              fontSize: s.sp(24),
               fontWeight: FontWeight.w700,
             ),
           ),
           SizedBox(height: s.hp(1.7)),
           Container(
             margin: EdgeInsets.symmetric(horizontal: s.wp(3.2)),
-            padding: EdgeInsets.symmetric(horizontal: s.wp(3.4), vertical: s.hp(1)),
+            padding:
+                EdgeInsets.symmetric(horizontal: s.wp(3.4), vertical: s.hp(1)),
             decoration: BoxDecoration(
               color: const Color(0xFFF0F1F6),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Row(
               children: [
-                Icon(Icons.campaign_rounded, color: const Color(0xFF7181DD), size: s.sp(20)),
+                Icon(Icons.campaign_rounded,
+                    color: const Color(0xFF7181DD), size: s.sp(20)),
                 SizedBox(width: s.wp(2.2)),
                 Expanded(
                   child: Text(
                     'Create your own training plan like you prefer',
                     style: TextStyle(
                       color: AppColors.textNormal,
-                      fontSize: s.sp(13),
+                      fontSize: s.sp(11.8),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -1046,7 +1074,7 @@ class _PlanCard extends StatelessWidget {
             style: TextStyle(
               color: const Color(0xFF242635),
               fontWeight: FontWeight.w700,
-              fontSize: s.sp(34),
+              fontSize: s.sp(28),
             ),
           ),
           SizedBox(height: s.hp(1.4)),
@@ -1067,8 +1095,10 @@ class _PlanCard extends StatelessWidget {
               return Container(
                 width: s.wp(13),
                 height: s.wp(13),
-                decoration: BoxDecoration(shape: BoxShape.circle, color: colors[index]),
-                child: Icon(Icons.self_improvement_rounded, size: s.sp(20), color: Colors.white),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: colors[index]),
+                child: Icon(Icons.self_improvement_rounded,
+                    size: s.sp(20), color: Colors.white),
               );
             }),
           ),
@@ -1084,7 +1114,9 @@ class _TinyPro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: UIScale.of(context).wp(2.2), vertical: UIScale.of(context).hp(0.35)),
+      padding: EdgeInsets.symmetric(
+          horizontal: UIScale.of(context).wp(2.2),
+          vertical: UIScale.of(context).hp(0.35)),
       decoration: BoxDecoration(
         color: const Color(0xFFE2E5FF),
         borderRadius: BorderRadius.circular(999),
@@ -1118,7 +1150,7 @@ class ProgressScreen extends StatelessWidget {
               'Progress',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: s.sp(26),
+                fontSize: s.sp(23),
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -1135,7 +1167,7 @@ class ProgressScreen extends StatelessWidget {
                     '19 February, 2026',
                     style: TextStyle(
                       color: AppColors.primary,
-                      fontSize: s.sp(17),
+                      fontSize: s.sp(15.5),
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -1173,7 +1205,7 @@ class _LockedFrame extends StatelessWidget {
                 "Finish Today's exercise to add image",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: s.sp(14),
+                  fontSize: s.sp(13),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -1202,7 +1234,6 @@ class UIScale {
 
   double sp(double value) {
     final scale = (_wRatio * 0.65) + (_hRatio * 0.35);
-    return (value * scale).clamp(value * 0.9, value * 1.3);
+    return (value * scale).clamp(value * 0.95, value * 1.1);
   }
-
 }
