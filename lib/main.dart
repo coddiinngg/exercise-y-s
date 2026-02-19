@@ -950,173 +950,104 @@ class StreakScreen extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xFFDEE7FF), Color(0xFFC8D8FF)],
-              ),
-            ),
+            color: const Color(0xFFC8D5F2),
             padding:
-                EdgeInsets.fromLTRB(s.wp(5.3), s.hp(1.6), s.wp(5.3), s.hp(1.8)),
+                EdgeInsets.fromLTRB(s.wp(5.3), s.hp(1.5), s.wp(5.3), s.hp(2.2)),
             child: Column(
               children: [
                 Text(
                   'Streak',
                   style: TextStyle(
-                    fontSize: s.sp(20),
+                    fontSize: s.sp(22),
                     fontWeight: FontWeight.w800,
                     color: AppColors.primary,
                   ),
                 ),
-                SizedBox(height: s.hp(1.1)),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: s.wp(4.3), vertical: s.hp(1.0)),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.78),
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: const Color(0xFFDDE5FF)),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '0',
-                            style: TextStyle(
-                              fontSize: s.sp(48),
-                              height: 1,
-                              fontWeight: FontWeight.w800,
-                              color: AppColors.primary,
-                            ),
-                          ),
-                          Text(
-                            '연속 달성',
-                            style: TextStyle(
-                              fontSize: s.sp(15),
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.primaryDeep,
-                            ),
-                          ),
-                          SizedBox(height: s.hp(0.2)),
-                          Text(
-                            '오늘 루틴 완료하면 +1',
-                            style: TextStyle(
-                              fontSize: s.sp(11.2),
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textSubtle,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        width: s.wp(22),
-                        height: s.wp(22),
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            colors: [Color(0xFFFFEDCE), Color(0xFFFFD085)],
+                SizedBox(height: s.hp(2.0)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '0',
+                          style: TextStyle(
+                            fontSize: s.sp(72),
+                            height: 1,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.primaryDeep,
+                            shadows: const [
+                              Shadow(
+                                color: Color(0x26FFFFFF),
+                                blurRadius: 2,
+                                offset: Offset(0, 1),
+                              )
+                            ],
                           ),
                         ),
-                        child: Center(
-                          child: Text('🔥', style: TextStyle(fontSize: s.sp(32))),
+                        Text(
+                          'Day streak!',
+                          style: TextStyle(
+                            fontSize: s.sp(14),
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.primaryDeep,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                    Text('🔥', style: TextStyle(fontSize: s.sp(74))),
+                  ],
                 ),
-                SizedBox(height: s.hp(0.35)),
               ],
             ),
           ),
           Expanded(
             child: ListView(
               padding: EdgeInsets.fromLTRB(
-                  s.wp(5.3), s.hp(2.1), s.wp(5.3), s.hp(3.2)),
+                  s.wp(5.3), s.hp(2.2), s.wp(5.3), s.hp(3.2)),
               children: [
-                Container(
-                  padding: EdgeInsets.fromLTRB(
-                      s.wp(3.7), s.hp(1.2), s.wp(3.7), s.hp(1.45)),
-                  decoration: BoxDecoration(
-                    color: AppColors.cardSoft,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.divider),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Calendar',
-                        style: TextStyle(
-                          color: const Color(0xFF5E6888),
-                          fontWeight: FontWeight.w800,
-                          fontSize: s.sp(17),
-                        ),
-                      ),
-                      SizedBox(height: s.hp(1.0)),
-                      Container(
-                        padding: EdgeInsets.all(s.wp(3.5)),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18),
-                          border:
-                              Border.all(color: AppColors.divider, width: 1.2),
-                        ),
-                        child: const _MiniCalendar(),
-                      ),
-                    ],
+                Text(
+                  'Calendar',
+                  style: TextStyle(
+                    color: const Color(0xFF808493),
+                    fontWeight: FontWeight.w800,
+                    fontSize: s.sp(18),
                   ),
                 ),
-                SizedBox(height: s.hp(2.4)),
+                SizedBox(height: s.hp(1.0)),
                 Container(
-                  padding: EdgeInsets.fromLTRB(
-                      s.wp(3.7), s.hp(1.2), s.wp(3.7), s.hp(1.45)),
+                  padding: EdgeInsets.all(s.wp(3.5)),
                   decoration: BoxDecoration(
-                    color: AppColors.cardSoft,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.divider),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(22),
+                    border: Border.all(color: const Color(0xFFD6D8DF), width: 1.8),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Related Papers',
-                        style: TextStyle(
-                          color: const Color(0xFF2C2F40),
-                          fontWeight: FontWeight.w800,
-                          fontSize: s.sp(17),
-                        ),
-                      ),
-                      SizedBox(height: s.hp(0.45)),
-                      Text(
-                        '스와이프해서 얼굴 라인/근육 운동 관련 논문을 읽어보세요',
-                        style: TextStyle(
-                          color: AppColors.textSubtle,
-                          fontWeight: FontWeight.w600,
-                          fontSize: s.sp(11.6),
-                        ),
-                      ),
-                      SizedBox(height: s.hp(1.1)),
-                      SizedBox(
-                        height: s.hp(20.5),
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _paperCards.length,
-                          separatorBuilder: (_, __) =>
-                              SizedBox(width: s.wp(2.6)),
-                          itemBuilder: (context, index) {
-                            final paper = _paperCards[index];
-                            return _PaperCard(
-                              paper: paper,
-                              onOpen: () => _openPaper(context, paper.url),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                  child: const _MiniCalendar(),
+                ),
+                SizedBox(height: s.hp(2.4)),
+                Text(
+                  'Articles',
+                  style: TextStyle(
+                    color: const Color(0xFF2C2F40),
+                    fontWeight: FontWeight.w800,
+                    fontSize: s.sp(17),
+                  ),
+                ),
+                SizedBox(height: s.hp(0.95)),
+                SizedBox(
+                  height: s.hp(26),
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _paperCards.length,
+                    separatorBuilder: (_, __) => SizedBox(width: s.wp(2.6)),
+                    itemBuilder: (context, index) {
+                      final paper = _paperCards[index];
+                      return _PaperCard(
+                        paper: paper,
+                        onOpen: () => _openPaper(context, paper.url),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -1261,8 +1192,6 @@ class _MiniCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = UIScale.of(context);
     final days = List.generate(28, (i) => i + 1);
-    const completedDays = {2, 5, 8, 11, 13, 17};
-    const today = 19;
 
     return Column(
       children: [
@@ -1306,33 +1235,13 @@ class _MiniCalendar extends StatelessWidget {
             childAspectRatio: 1.35,
           ),
           itemBuilder: (context, index) {
-            final day = days[index];
-            final isCompleted = completedDays.contains(day);
-            final isToday = day == today;
             return Center(
-              child: Container(
-                width: s.wp(8),
-                height: s.wp(8),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: isToday
-                      ? const Color(0xFFE2E9FF)
-                      : (isCompleted ? const Color(0xFFEAF9F4) : Colors.transparent),
-                  border: isToday
-                      ? Border.all(color: AppColors.primary, width: 1.4)
-                      : null,
-                ),
-                child: Center(
-                  child: Text(
-                    '$day',
-                    style: TextStyle(
-                      color: isToday
-                          ? AppColors.primary
-                          : (isCompleted ? const Color(0xFF1B9364) : const Color(0xFF8D8F97)),
-                      fontSize: s.sp(15.2),
-                      fontWeight: isToday ? FontWeight.w800 : FontWeight.w600,
-                    ),
-                  ),
+              child: Text(
+                '${days[index]}',
+                style: TextStyle(
+                  color: const Color(0xFF8D8F97),
+                  fontSize: s.sp(16),
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             );
@@ -1592,67 +1501,67 @@ class _PlanCard extends StatelessWidget {
 class PaperCardData {
   const PaperCardData({
     required this.title,
-    required this.journal,
-    required this.topic,
+    required this.readTime,
     required this.url,
-    required this.colors,
+    required this.previewColor,
+    required this.previewIcon,
   });
 
   final String title;
-  final String journal;
-  final String topic;
+  final String readTime;
   final String url;
-  final List<Color> colors;
+  final Color previewColor;
+  final IconData previewIcon;
 }
 
 const _paperCards = [
   PaperCardData(
-    title: 'Facial Exercise and Rejuvenation',
-    journal: 'JAMA Dermatology',
-    topic: '안면 운동',
+    title: 'All about MEWING',
+    readTime: '3-minute read',
     url:
         'https://scholar.google.com/scholar?q=facial+exercise+rejuvenation+clinical+trial',
-    colors: [Color(0xFF7B8CFF), Color(0xFF485CE6)],
+    previewColor: Color(0xFFFDE7A5),
+    previewIcon: Icons.question_mark_rounded,
   ),
   PaperCardData(
-    title: 'Masticatory Muscle Function',
-    journal: 'Clinical Anatomy',
-    topic: '저작근',
+    title: 'Diet for Jawline',
+    readTime: '2-minute read',
     url:
         'https://scholar.google.com/scholar?q=masticatory+muscle+function+anatomy+study',
-    colors: [Color(0xFF2EA7A2), Color(0xFF1C7A7A)],
+    previewColor: Color(0xFFDDF3FF),
+    previewIcon: Icons.restaurant_menu_rounded,
   ),
   PaperCardData(
-    title: 'Neck Posture and Jawline',
-    journal: 'Musculoskeletal Science',
-    topic: '자세 교정',
+    title: 'Neck Posture Basics',
+    readTime: '4-minute read',
     url:
         'https://scholar.google.com/scholar?q=forward+head+posture+jaw+muscle+study',
-    colors: [Color(0xFFF08D66), Color(0xFFDD5F4F)],
+    previewColor: Color(0xFFE7ECFF),
+    previewIcon: Icons.accessibility_new_rounded,
   ),
   PaperCardData(
-    title: 'Lymphatic Massage Effects',
-    journal: 'Complementary Therapies',
-    topic: '림프 순환',
+    title: 'Lymphatic Massage',
+    readTime: '3-minute read',
     url:
         'https://scholar.google.com/scholar?q=lymphatic+facial+massage+edema+study',
-    colors: [Color(0xFF969BEA), Color(0xFF6D73CA)],
+    previewColor: Color(0xFFFDE8E8),
+    previewIcon: Icons.spa_rounded,
   ),
   PaperCardData(
-    title: 'Skin Elasticity and Exercise',
-    journal: 'Skin Research',
-    topic: '탄력 개선',
+    title: 'Skin Elasticity',
+    readTime: '5-minute read',
     url:
         'https://scholar.google.com/scholar?q=skin+elasticity+exercise+intervention',
-    colors: [Color(0xFF5BAA82), Color(0xFF2D8662)],
+    previewColor: Color(0xFFE8F7ED),
+    previewIcon: Icons.auto_awesome_rounded,
   ),
   PaperCardData(
-    title: 'Habit Training Adherence',
-    journal: 'Behavioral Medicine',
-    topic: '습관 형성',
+    title: 'Habit Building',
+    readTime: '2-minute read',
     url:
         'https://scholar.google.com/scholar?q=habit+formation+adherence+mobile+health+study',
-    colors: [Color(0xFF6AA6E8), Color(0xFF3A74CB)],
+    previewColor: Color(0xFFF8EEFF),
+    previewIcon: Icons.track_changes_rounded,
   ),
 ];
 
@@ -1671,57 +1580,55 @@ class _PaperCard extends StatelessWidget {
     return Container(
       width: s.wp(68),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: paper.colors,
-        ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: const Color(0xFFD3D7E2), width: 1.4),
         boxShadow: const [
           BoxShadow(
-            color: Color(0x22000000),
-            blurRadius: 16,
-            offset: Offset(0, 10),
+            color: Color(0x10212F55),
+            blurRadius: 6,
+            offset: Offset(0, 2),
           ),
         ],
       ),
-      padding: EdgeInsets.all(s.wp(4)),
+      padding: EdgeInsets.fromLTRB(s.wp(2.9), s.hp(0.9), s.wp(2.9), s.hp(1.1)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding:
-                EdgeInsets.symmetric(horizontal: s.wp(2.2), vertical: s.hp(0.3)),
+            height: s.hp(11.8),
+            width: double.infinity,
+            padding: EdgeInsets.all(s.wp(2.3)),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.24),
-              borderRadius: BorderRadius.circular(999),
+              color: paper.previewColor,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFFCBD1DE), width: 1.3),
             ),
-            child: Text(
-              paper.topic,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: s.sp(10.5),
-                fontWeight: FontWeight.w700,
+            child: Align(
+              alignment: Alignment.center,
+              child: Icon(
+                paper.previewIcon,
+                size: s.sp(58),
+                color: const Color(0xFF2D3F86).withOpacity(0.8),
               ),
             ),
           ),
-          SizedBox(height: s.hp(1.1)),
+          SizedBox(height: s.hp(1.2)),
           Text(
             paper.title,
-            maxLines: 2,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: Colors.white,
-              fontSize: s.sp(16),
-              height: 1.2,
+              color: const Color(0xFF212635),
+              fontSize: s.sp(14.4),
               fontWeight: FontWeight.w800,
             ),
           ),
           SizedBox(height: s.hp(0.6)),
           Text(
-            paper.journal,
+            paper.readTime,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.95),
+              color: const Color(0xFF8A90A4),
               fontSize: s.sp(12),
               fontWeight: FontWeight.w600,
             ),
@@ -1729,19 +1636,20 @@ class _PaperCard extends StatelessWidget {
           const Spacer(),
           SizedBox(
             width: double.infinity,
-            child: FilledButton.icon(
+            child: FilledButton(
               onPressed: onOpen,
               style: FilledButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: const Color(0xFF202437),
+                backgroundColor: AppColors.primary,
+                foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(999)),
+                elevation: 0,
+                minimumSize: Size.fromHeight(s.hp(4.0)),
               ),
-              icon: const Icon(Icons.open_in_new_rounded, size: 16),
-              label: Text(
-                '논문 읽기',
+              child: Text(
+                'Read',
                 style: TextStyle(
-                  fontSize: s.sp(12.8),
+                  fontSize: s.sp(12.9),
                   fontWeight: FontWeight.w700,
                 ),
               ),
